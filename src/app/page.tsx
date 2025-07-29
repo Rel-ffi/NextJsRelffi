@@ -1,9 +1,8 @@
+import MenuComponent from "@/components/MenuComponent/MenuComponent";
 
 
 export default function Home() {
   return (
-    <div>
-
-    </div>
+    <MenuComponent showMenu={true}/>
   );
 }

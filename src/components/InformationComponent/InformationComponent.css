@@ -1,0 +1,28 @@
+.cards-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    padding: 16px;
+}
+
+.user-card,
+.post-card,
+.comment-card {
+    background-color: #0a0a0a;
+    border: 1px solid #f9f9f9;
+    border-radius: 8px;
+    padding: 12px 16px;
+    width: 250px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    transition: box-shadow 0.3s ease;
+}
+
+.user-card span,
+.post-card span,
+.comment-card span {
+    display: block;
+    margin-bottom: 6px;
+    color: #f9f9f9;
+    font-size: 14px;
+}
+

@@ -1,0 +1,26 @@
+.Card-Id-Wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 96vh;
+}
+
+.Card-Id {
+    background: #0a0a0a;
+    border: white solid 1px;
+    border-radius: 12px;
+    padding: 24px 32px;
+    width: 100%;
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.Card-Id span {
+    font-size: 16px;
+    color: white;
+    line-height: 1.4;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 6px;
+}
