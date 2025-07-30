@@ -1,0 +1,16 @@
+.add-wrapper {
+    display: flex;
+    justify-content: center;
+    width: 100vw;
+    height: 2vh;
+    margin-top: 10px;
+}
+
+Form {
+    display: flex;
+    gap: 30px;
+}
+
+Form>button {
+    width: 46px;
+}
