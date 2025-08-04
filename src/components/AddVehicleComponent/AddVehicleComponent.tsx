@@ -1,39 +1,42 @@
-import Form from "next/form";
+"use client"
+
 import "./AddVehicleComponent.css"
 import {AddVehicle} from "@/actions/AddVehicleServer";
+import {VehicleFormValues, VehicleSchema} from "@/schematics/vehicle.schema";
+import {useForm} from "react-hook-form";
+import {joiResolver} from "@hookform/resolvers/joi";
 
-const AddVehicleComponent = async() => {
+const AddVehicleComponent = () => {
+
+    const {register, handleSubmit, formState: {errors}, reset,} = useForm<VehicleFormValues>({
+        resolver: joiResolver(VehicleSchema)
+    });
+
+    const onSubmit = async (data:VehicleFormValues) => {
+        await AddVehicle(data);
+        reset();
+    }
+
+
     return (
         <div className="add-wrapper">
-            <Form action={AddVehicle} key="add-vehicle">
-                <input
-                    name="brand"
-                    placeholder="Brand"
-                    pattern="^[a-zA-Zа-яА-ЯёЁіІїЇєЄҐґ]{1,20}$"
-                    maxLength={20}
-                    minLength={1}
-                    required
-                />
+            <form onSubmit={handleSubmit(onSubmit)}>
+                <div>
+                    <input {...register("brand")} placeholder="Brand"/>
+                    {errors.brand && <p className="error">{errors.brand.message}</p>}
+                </div>
 
-                <input
-                    name="price"
-                    type="number"
-                    placeholder="Price"
-                    min={0}
-                    max={1000000}
-                    required
-                />
+                <div>
+                    <input {...register("price")} placeholder="Price"/>
+                    {errors.price && <p className="error">{errors.price.message}</p>}
+                </div>
 
-                <input
-                    name="year"
-                    type="number"
-                    placeholder="Year"
-                    min={1990}
-                    max={2024}
-                    required
-                />
-                <button>Add</button>
-            </Form>
+                <div>
+                    <input {...register("year")} placeholder="Year"/>
+                    {errors.year && <p className="error">{errors.year.message}</p>}
+                </div>
+                <button type="submit">Add</button>
+            </form>
         </div>
     );
 };
